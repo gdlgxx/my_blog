@@ -17,3 +17,11 @@ def detail(request,id):
     except Article.DoNotExist:
 	raise Http404
     return render(request,'post.html',{"post" : post})
+def archives(request):	
+    try:
+	post_list = Article.objects.all()
+    except Article.DoNotExist:
+	raise Http404
+    return render(request,'archives.html',{"post_list" : post_list, 'error': False})
+def aboutme(request):
+    return render(request,'aboutme.html')
